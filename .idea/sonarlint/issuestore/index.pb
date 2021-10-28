@@ -21,3 +21,7 @@ A
 public/index.html,f\4\f43ecdf8d666ee908aacce037b4cd72159e4741b
 =
 src/index.tsx,5\a\5ab44fe33ca96299f51ad4778a73e425b92bf439
+<
+src/store.ts,9\d\9da959882fadb4f95c3ed3b3c355966663ac333a
+>
+src/reducer.ts,1\7\17c92fd4e09d50640e81e6aa3982acb4bac35fc2

@@ -211,6 +211,17 @@ like a fallback element that can be any react element, it renders this prop as a
 
 
 
+
+# Integrating Redux With  React
+
+## installing React 
+~~~shell 
+npm install -save redux
+npm install -save react-redux
+~~~
+
+
+
 ---
 Thank you for you support and Reading my tutorial 
 Connect me at 

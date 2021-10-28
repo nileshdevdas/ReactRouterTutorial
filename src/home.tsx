@@ -1,6 +1,9 @@
 import {useEffect} from "react";
 
+
 export default function Home() {
+
+
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/json-iterator/test-data/master/large-file.json')
             .then(res => res.json())
