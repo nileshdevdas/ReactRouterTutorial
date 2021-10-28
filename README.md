@@ -179,10 +179,40 @@ export default App;
 Each Router is designed to work in specific Conditions 
 however its recommended to understand the use of each Router component and Define the Applicability 
 
+---
+# Can we do lazy Loading of React Components 
+What is lazy loading in react 
+## Bundling v/s Code Splitting
+
+
+# React.Lazy() and code splitting
+In React, lazy() is a function that lets you load components lazily through what is called code splitting without help from any external libraries. 
+
+Hence, the need for code splitting, code splitting is the process of dynamically splitting the bundle (mentioned above) into multiple bundles and this will be loaded dynamically on a need basis. This will fix the possible performance issues and you would not be losing any needed code in your application.
+
+
+Changing the Code From Normal To Lazy 
+
+~~~typescript jsx
+/** import Home from "./home";
+ import About from "./about";
+ import Contact from "./contact";
+ **/
+
+/** The React.lazy function lets you render a dynamic import as a regular component.**/
+const Home = lazy(() => import('./home'));
+const About = lazy(() => import('./about'));
+const Contact = lazy(() => import('./contact'));
+~~~
+
+#Suspense
+A really Suspense component that can be used to display alternative components. 
+like a fallback element that can be any react element, it renders this prop as a placeholder to deliver a smooth experience and also give user feedback while the lazy component is being loaded.
+
+
 
 ---
 Thank you for you support and Reading my tutorial 
-
 Connect me at 
 [Linked In](https://www.linkedin.com/in/nileshdevdas/?originalSubdomain=in) |
 [GitHub](https://github.com/nileshdevdas) |

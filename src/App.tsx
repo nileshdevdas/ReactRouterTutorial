@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import './App.css';
 /**************************************** STEP 2 **********************************/
-import {Link, HashRouter  as Router, Route, Switch} from 'react-router-dom';
-import Home from "./home";
-import About from "./about";
-import Contact from "./contact";
+import {HashRouter as Router, Link, Route, Switch} from 'react-router-dom';
+
+/** import Home from "./home";
+ import About from "./about";
+ import Contact from "./contact";
+ **/
+
+/** The React.lazy function lets you render a dynamic import as a regular component.**/
+const Home = lazy(() => import('./home'));
+const About = lazy(() => import('./about'));
+const Contact = lazy(() => import('./contact'));
 
 /**************************************** STEP 2 **********************************/
 
@@ -31,17 +38,20 @@ function App() {
                         </li>
                     </ul>
                 </nav>
-                <Switch>
-                    <Route exact path='/'
-                           component={Home}>
-                    </Route>
-                    <Route exact path='/about'
-                           component={About}>
-                    </Route>
-                    <Route exact path='/contact'
-                           component={Contact}>
-                    </Route>
-                </Switch>
+                <Suspense fallback={<div><img
+                    src="https://i.pinimg.com/originals/e5/c4/09/e5c409bd3a3ccda1a71a6ded294cf9ca.gif"></img></div>}>
+                    <Switch>
+                        <Route exact path='/'
+                               component={Home}>
+                        </Route>
+                        <Route exact path='/about'
+                               component={About}>
+                        </Route>
+                        <Route exact path='/contact'
+                               component={Contact}>
+                        </Route>
+                    </Switch>
+                </Suspense>
             </div>
         </Router>
         /**************************************** STEP 3 **********************************/
