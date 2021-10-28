@@ -1,46 +1,184 @@
-# Getting Started with Create React App
+<h1 style="color:blue">The React Routers and its Types with Examples</h1> 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introduction to Routers : 
+*  BrowserRouter 
+*  MemoryRouter 
+*  HashRouter 
 
-## Available Scripts
+# Installing React Router 
+~~~shell script
+create-react-app route-demos
+cd route-demo
+npm install  react-router-dom 
+npm i --save-dev @types/react-router-dom
+~~~
 
-In the project directory, you can run:
+# React Router Main Components
+### BrowserRouter: 
+BrowserRouter is a router implementation that uses the HTML5 history API(pushState, replaceState and the popstate event) to keep your UI in sync with the URL. It is the parent component that is used to store all of the other components.
 
-### `yarn start`
+### Route: 
+Route is the conditionally shown component that renders some UI when its path matches the current URL.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Link: 
+Link component is used to create links to different routes and implement navigation around the application. It works like HTML anchor tag.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Switch: 
+Switch component is used to render only the first route that matches the location rather than rendering all matching routes. Although there is no defying functionality of SWITCH tag in our application because none of the LINK paths are ever going to coincide. But let’s say we have a route (Note that there is no EXACT in here), then all the Route tags are going to be processed which start with ‘/’ (all Routes start with /). This is where we need SWITCH statement to process only one of the statements.
 
-### `yarn test`
+## importing the react router above components  
+~~~typescript jsx 
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Switch
+} from 'react-router-dom';
+~~~
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Creating the Route Components  
+~~~typescript jsx
+/* home.tsx*/
+export default function Home() {
+    return (
+        <div>Home</div>
+    )
+}
+/* contact.tsx*/
+export default function Contact (){
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    return (
+        <div>Contacts</div>
+    )
+}
+/* about.tsx*/
+export default function About() {
+    return (
+        <div>About</div>
+    )
+}
+~~~
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Creating the NavigationBar
+* in the public/index.html i added the following in the head section to enable bootstrap for good navigation bar  
+~~~html
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+~~~
 
-### `yarn eject`
+~~~typescript jsx
+<nav className="navbar navbar-expand-sm bg-light">
+    <ul className="navbar-nav">
+        <li className="nav-item">
+            <Link className="nav-link" to="/">Home</Link>
+        </li>
+        <li className="nav-item">
+            <Link className="nav-link" to="/about">About</Link>
+        </li>
+         <li className="nav-item">
+            <Link className="nav-link" to="/contact">Contact</Link>
+         </li>
+    </ul>
+</nav>
+~~~
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Creating the Switch 
+~~~typescript jsx
+<Switch>
+    <Route exact path='/' component={Home}></Route>
+    <Route exact path='/about' component={About}></Route>
+    <Route exact path='/contact' component={Contact}></Route>
+</Switch>
+~~~
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# The Complete Code 
+~~~typescript jsx
+import React from 'react';
+import './App.css';
+/**************************************** STEP 2 **********************************/
+import {Link, MemoryRouter as Router, Route, Switch} from 'react-router-dom';
+import Home from "./home";
+import About from "./about";
+import Contact from "./contact";
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+/**************************************** STEP 2 **********************************/
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+/**********************************************STEP 1***************************************
+ npm install react-router-dom
+ npm i --save-dev @types/react-router-dom
+ ***********************************************STEP 1***************************************/
+function App() {
+    return (
+        /**************************************** STEP 3 **********************************/
+        <Router>
+            <div className="App">
+                <nav className="navbar navbar-expand-sm bg-light">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/about">About</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/contact">Contact</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route exact path='/'
+                           component={Home}>
+                    </Route>
+                    <Route exact path='/about'
+                           component={About}>
+                    </Route>
+                    <Route exact path='/contact'
+                           component={Contact}>
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+        /**************************************** STEP 3 **********************************/
+    );
+}
+export default App;
+~~~
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![The First Route Demo](https://i.ibb.co/thMK9c8/Router.gif)
+
+##### So in the above example we used the memory router if you see the demonstration of the memory router you will be able to see that when you click the links the browser url is not changing which is really surprising. 
+##### This  type of routing is good to use when we dont have the area of browsers and example we wish to test this in react-native or application that dont use browsers 
+
+
+## Changing to the Browser Router 
+
+![Browser Router](https://i.ibb.co/MMYRK6T/Browser-Router.gif)
+##### If you see the above behaviour you would be seeing that the browser remembers the implementation of back and forward unlike the MemoryRouter here the history is saved in the Browser
+
+
+
+# Working with the HashRouter
+#### Hash Router: 
+* Hash router uses client-side hash routing. 
+* It uses the hash portion of the URL (i.e. window.location.hash) to keep your UI in sync with the URL. 
+* Hash portion of the URL won’t be handled by the server, the server will always send the index.html for every request and ignore the hash value. 
+* It doesn’t need any configuration in the server to handle routes. 
+* It is used to support legacy browsers which usually don’t support HTML pushState API. 
+* It is very useful for the legacy browsers or you don’t have a server logic to handle the client-side. 
+* Not a Very Recommended Approach
+
+![HashRouter](https://i.ibb.co/2ncpqHt/Hash-Router.gif)
+
+#### Usage Conclusion 
+Each Router is designed to work in specific Conditions 
+however its recommended to understand the use of each Router component and Define the Applicability 
+
+
+
+
