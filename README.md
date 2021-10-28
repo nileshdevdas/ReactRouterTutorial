@@ -97,7 +97,7 @@ export default function About() {
 
 
 # The Complete Code 
-~~~typescript jsx
+```typescript jsx
 import React from 'react';
 import './App.css';
 /**************************************** STEP 2 **********************************/
@@ -148,7 +148,7 @@ function App() {
     );
 }
 export default App;
-~~~
+````
 
 ![The First Route Demo](https://i.ibb.co/thMK9c8/Router.gif)
 
@@ -180,5 +180,12 @@ Each Router is designed to work in specific Conditions
 however its recommended to understand the use of each Router component and Define the Applicability 
 
 
+---
+Thank you for you support and Reading my tutorial 
+
+Connect me at 
+[Linked In](https://www.linkedin.com/in/nileshdevdas/?originalSubdomain=in) |
+[GitHub](https://github.com/nileshdevdas) |
+[Skype](nilesh.devdas@outlook.com)
 
 
